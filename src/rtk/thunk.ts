@@ -4,12 +4,10 @@ import {
   getWeatherData,
   getWeatherDataError,
   getWeatherDataSuccess,
-} from "./sliceWeather";
-import {
-  getWeatherDataWeek,
-  getWeatherDataWeekError,
-  getWeatherDataWeekSuccess,
-} from "./sliceWeatherWeek";
+  getWeatherWeekData,
+  getWeatherWeekDataError,
+  getWeatherWeekDataSuccess,
+} from "./actionType";
 
 interface City {
   defaultCity: string;
@@ -37,12 +35,12 @@ export const fetchWeatherWeek =
     const { city, days } = props;
 
     try {
-      dispatch(getWeatherDataWeek());
+      dispatch(getWeatherWeekData());
       const res = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=8e7c5f78f33543508c571114232305&q=${city}&days=${days}&aqi=no&alerts=no`
       );
-      dispatch(getWeatherDataWeekSuccess(res.data));
+      dispatch(getWeatherWeekDataSuccess(res.data));
     } catch (e: any) {
-      dispatch(getWeatherDataWeekError(e.message));
+      dispatch(getWeatherWeekDataError(e.message));
     }
   };

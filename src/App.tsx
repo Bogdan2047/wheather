@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Main } from "./page/main";
 import { Header } from "./components/header";
-import { fetchWeather, fetchWeatherWeek } from "./rtk/actionCreator";
+import { fetchWeather, fetchWeatherWeek } from "./rtk/thunk";
 import { useAppDispatch } from "./hooks/hook";
 
 function App() {

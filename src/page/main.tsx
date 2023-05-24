@@ -14,10 +14,12 @@ type GetDays = {
 export const Main: FC<GetDays> = (props: GetDays) => {
   const { getDays } = props;
   const { weather, isLoading, errors } = useAppSelector(
-    (state) => state.Reducer
+    (state) => state.ReducerWeather
   );
 
-  const { weatherWeek } = useAppSelector((state) => state.Week);
+  console.log(weather);
+
+  const { weatherWeek } = useAppSelector((state) => state.ReducerWeatherWeek);
 
   if (weatherWeek !== null) {
     var { forecast } = weatherWeek;
