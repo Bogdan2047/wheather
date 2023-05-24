@@ -1,23 +1,20 @@
-import { useState } from "react";
+import { FC } from "react";
 import { IconSVG } from "../images/IconSVG";
-import { useAppDispatch } from "../hooks/hook";
-import { fetchWheather } from "../rtk/actionCreator";
 
-export const Header = () => {
-  const [city, setCity] = useState<any>("");
-  const dispatch = useAppDispatch();
+type Props = {
+  sendCity: Function;
+  getCity: Function;
+};
 
-  const sendCity = () => {
-    dispatch(fetchWheather(city));
-    setCity("");
-  };
+export const Header: FC<Props> = (props: Props) => {
+  const { sendCity, getCity } = props;
 
   return (
     <div className="flex flex-row justify-between">
       <div className="flex flex-row">
         <IconSVG id="logo-header" />
         <span className="text-3xl font-bold text-blue-500 pt-5 pl-4">
-          Wheather
+          Weather
         </span>
       </div>
       <div className="flex flex-row">
@@ -28,16 +25,14 @@ export const Header = () => {
           <div className="h-20 px-5">
             <input
               placeholder="Find city"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setCity(e.target.value)
-              }
-              value={city}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => getCity(e)}
+              // value={""}
             />
           </div>
           <div>
             <button
               className="bg-blue-500 h-6 w-12 text-white rounded-sm"
-              onClick={sendCity}
+              onClick={() => sendCity()}
             >
               Find
             </button>

@@ -1,36 +1,36 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface StateData {
-  wheather: any;
+  weather: any;
   isLoading: boolean;
   errors: string;
 }
 
 const initialState: StateData = {
-  wheather: null,
+  weather: null,
   isLoading: false,
   errors: "",
 };
 
 const state = createSlice({
-  name: "wheather",
+  name: "weather",
   initialState,
   reducers: {
-    getWheatherData(state) {
+    getWeatherData(state) {
       state.isLoading = true;
     },
-    getWheatherDataSuccess(state, action: PayloadAction<any>) {
+    getWeatherDataSuccess(state, action: PayloadAction<any>) {
       state.isLoading = false;
-      state.wheather = action.payload;
+      state.weather = action.payload;
     },
-    getWheatherDataError(state, action) {
+    getWeatherDataError(state, action) {
       state.isLoading = false;
       state.errors = action.payload;
     },
   },
 });
 
-export const { getWheatherData, getWheatherDataSuccess, getWheatherDataError } =
+export const { getWeatherData, getWeatherDataSuccess, getWeatherDataError } =
   state.actions;
 
 export default state.reducer;

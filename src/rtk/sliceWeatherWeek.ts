@@ -1,29 +1,29 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface StateDataWeek {
-  wheatherWeek: any;
+  weatherWeek: any;
   isLoading: boolean;
   errors: string;
 }
 
 const initialState: StateDataWeek = {
-  wheatherWeek: null,
+  weatherWeek: null,
   isLoading: false,
   errors: "",
 };
 
 const wheatherWeek = createSlice({
-  name: "wheatherWeek",
+  name: "weatherWeek",
   initialState,
   reducers: {
-    getWheatherDataWeek(state) {
+    getWeatherDataWeek(state) {
       state.isLoading = true;
     },
-    getWheatherDataWeekSuccess(state, action: PayloadAction<any>) {
+    getWeatherDataWeekSuccess(state, action: PayloadAction<any>) {
       state.isLoading = false;
-      state.wheatherWeek = action.payload;
+      state.weatherWeek = action.payload;
     },
-    getWheatherDataWeekError(state, action) {
+    getWeatherDataWeekError(state, action) {
       state.isLoading = false;
       state.errors = action.payload;
     },
@@ -31,9 +31,9 @@ const wheatherWeek = createSlice({
 });
 
 export const {
-  getWheatherDataWeek,
-  getWheatherDataWeekSuccess,
-  getWheatherDataWeekError,
+  getWeatherDataWeek,
+  getWeatherDataWeekSuccess,
+  getWeatherDataWeekError,
 } = wheatherWeek.actions;
 
 export default wheatherWeek.reducer;

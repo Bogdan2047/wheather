@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import Reducer from "./sliceWheather";
-import Week from "./sliceWheatherWeek";
+import Reducer from "./sliceWeather";
+import Week from "./sliceWeatherWeek";
 
 const RootReducer = combineReducers({
   Reducer,

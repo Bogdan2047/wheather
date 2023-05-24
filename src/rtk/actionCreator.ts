@@ -1,41 +1,48 @@
 import axios from "axios";
 import { AppDispatch } from "./index";
 import {
-  getWheatherData,
-  getWheatherDataError,
-  getWheatherDataSuccess,
-} from "./sliceWheather";
+  getWeatherData,
+  getWeatherDataError,
+  getWeatherDataSuccess,
+} from "./sliceWeather";
 import {
-  getWheatherDataWeek,
-  getWheatherDataWeekError,
-  getWheatherDataWeekSuccess,
-} from "./sliceWheatherWeek";
+  getWeatherDataWeek,
+  getWeatherDataWeekError,
+  getWeatherDataWeekSuccess,
+} from "./sliceWeatherWeek";
 
 interface City {
-  city: string;
+  defaultCity: string;
 }
 
-export const fetchWheather = (props: City) => async (dispatch: AppDispatch) => {
+interface CityDays {
+  city: string;
+  days?: number;
+}
+
+export const fetchWeather = (props: City) => async (dispatch: AppDispatch) => {
   try {
-    dispatch(getWheatherData());
+    dispatch(getWeatherData());
     const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${props}&appid=7f822e46c40ce4e405054e70ffeb1740`
+      `https://api.weatherapi.com/v1/current.json?key=8e7c5f78f33543508c571114232305&q=${props}&aqi=no`
     );
-    dispatch(getWheatherDataSuccess(res.data));
+    dispatch(getWeatherDataSuccess(res.data));
   } catch (e: any) {
-    dispatch(getWheatherDataError(e.message));
+    dispatch(getWeatherDataError(e.message));
   }
 };
 
-export const fetchWheatherWeek =
-  (props: City) => async (dispatch: AppDispatch) => {
+export const fetchWeatherWeek =
+  (props: CityDays) => async (dispatch: AppDispatch) => {
+    const { city, days } = props;
+
     try {
-      dispatch(getWheatherDataWeek());
+      dispatch(getWeatherDataWeek());
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast/daily?q=${props}&units=metric&cnt=7&appid=7f822e46c40ce4e405054e70ffeb1740`
+        `https://api.weatherapi.com/v1/forecast.json?key=8e7c5f78f33543508c571114232305&q=${city}&days=${days}&aqi=no&alerts=no`
       );
-      dispatch(getWheatherDataWeekSuccess(res.data));
+      dispatch(getWeatherDataWeekSuccess(res.data));
     } catch (e: any) {
-      dispatch(getWheatherDataWeekError(e.message));
+      dispatch(getWeatherDataWeekError(e.message));
     }
   };
