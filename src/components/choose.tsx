@@ -4,9 +4,7 @@ type GetData = {
   getDays: Function;
 };
 
-export const Choose: FC<GetData> = (props: GetData) => {
-  const { getDays } = props;
-
+export const Choose: FC<GetData> = ({ getDays }: GetData) => {
   const [isActive, setIsActive] = useState({
     a: true,
     b: false,

@@ -26,7 +26,6 @@ export const Header: FC<Props> = (props: Props) => {
             <input
               placeholder="Find city"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => getCity(e)}
-              // value={""}
             />
           </div>
           <div>

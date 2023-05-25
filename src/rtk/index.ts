@@ -1,6 +1,4 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// import Reducer from "./sliceWeather";
-// import Week from "./sliceWeatherWeek";
 import { ReducerWeather } from "./reducerWeather";
 import { ReducerWeatherWeek } from "./reducerWeatherWeek";
 

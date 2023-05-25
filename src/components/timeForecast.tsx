@@ -22,9 +22,7 @@ interface Props {
   forecastday: Forecatsdays[];
 }
 
-export const TimeForecast: FC<Props> = (props: Props) => {
-  const { forecastday } = props;
-
+export const TimeForecast: FC<Props> = ({ forecastday }: Props) => {
   return (
     <div className="w-full flex flex-wrap justify-between pt-10">
       {forecastday.map((item: Forecatsdays) => {

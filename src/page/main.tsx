@@ -11,15 +11,14 @@ type GetDays = {
   getDays: Function;
 };
 
-export const Main: FC<GetDays> = (props: GetDays) => {
-  const { getDays } = props;
+export const Main: FC<GetDays> = ({ getDays }: GetDays) => {
   const { weather, isLoading, errors } = useAppSelector(
     (state) => state.ReducerWeather
   );
 
-  console.log(weather);
-
-  const { weatherWeek } = useAppSelector((state) => state.ReducerWeatherWeek);
+  const { weatherWeek, isLoadingWeek } = useAppSelector(
+    (state) => state.ReducerWeatherWeek
+  );
 
   if (weatherWeek !== null) {
     var { forecast } = weatherWeek;
@@ -27,8 +26,6 @@ export const Main: FC<GetDays> = (props: GetDays) => {
   if (weather !== null) {
     var { current, location } = weather;
   }
-
-  console.log(weatherWeek);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 80 }} spin />;
 
@@ -60,6 +57,13 @@ export const Main: FC<GetDays> = (props: GetDays) => {
           </div>
           <div className="w-full">
             <Choose getDays={getDays} />
+          </div>
+        </div>
+      )}
+      {isLoadingWeek && (
+        <div className="2xl:pl-96 md:pl-32 pt-40">
+          <div className="pl-96">
+            <Spin indicator={antIcon} />;
           </div>
         </div>
       )}

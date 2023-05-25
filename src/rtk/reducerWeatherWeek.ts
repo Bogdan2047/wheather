@@ -6,24 +6,24 @@ import {
 
 interface StateData {
   weatherWeek: any;
-  isLoading: boolean;
-  errors: string;
+  isLoadingWeek: boolean;
+  errorsWeek: string;
 }
 
 const initialState: StateData = {
   weatherWeek: null,
-  isLoading: false,
-  errors: "",
+  isLoadingWeek: false,
+  errorsWeek: "",
 };
 
 export const ReducerWeatherWeek = (state = initialState, action: any) => {
   switch (action.type) {
     case GET_WEATHER_WEEK_DATA:
-      return { ...state, loading: false };
+      return { ...state, isLoadingWeek: false };
     case GET_WEATHER_WEEK_DATA_SUCCESS:
-      return { ...state, weatherWeek: action.payload, loading: false };
+      return { ...state, weatherWeek: action.payload, isLoadingWeek: false };
     case GET_WEATHER_WEEK_DATA_ERROR:
-      return { ...state, errors: action.payload, loading: false };
+      return { ...state, errorsWeek: action.payload, isLoadingWeek: false };
     default:
       return state;
   }

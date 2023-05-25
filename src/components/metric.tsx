@@ -10,9 +10,13 @@ interface Props {
   wind_kph: number;
 }
 
-export const Metric: FC<Props> = (props: Props) => {
-  const { temp_c, feelslike_c, humidity, pressure_mb, wind_kph } = props;
-
+export const Metric: FC<Props> = ({
+  temp_c,
+  feelslike_c,
+  humidity,
+  pressure_mb,
+  wind_kph,
+}: Props) => {
   return (
     <div className="shadow-md rounded-2xl flex flex-row justify-between">
       <div className="relative pt-12 pl-8 w-full ">

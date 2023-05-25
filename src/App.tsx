@@ -6,8 +6,8 @@ import { fetchWeather, fetchWeatherWeek } from "./rtk/thunk";
 import { useAppDispatch } from "./hooks/hook";
 
 function App() {
-  const [city, setCity] = useState<any>("Kiev");
-  const [days, setDays] = useState<any>(14);
+  const [city, setCity] = useState<string | any>("Kiev");
+  const [days, setDays] = useState<number | any>(7);
 
   const dispatch = useAppDispatch();
 

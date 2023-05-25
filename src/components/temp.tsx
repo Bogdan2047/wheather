@@ -11,8 +11,12 @@ interface Props {
   condition: Cond;
 }
 
-export const Temp: FC<Props> = (props: Props) => {
-  const { name, localtime, temp_c, condition } = props;
+export const Temp: FC<Props> = ({
+  name,
+  localtime,
+  temp_c,
+  condition,
+}: Props) => {
   const { icon } = condition;
   return (
     <div className="shadow-md rounded-2xl pl-10 pt-11">
