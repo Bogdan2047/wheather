@@ -2,8 +2,8 @@ import { FC } from "react";
 import { IconSVG } from "../images/IconSVG";
 
 type Props = {
-  sendCity: Function;
-  getCity: Function;
+  sendCity: () => void;
+  getCity: (param: any) => void;
 };
 
 export const Header: FC<Props> = (props: Props) => {
@@ -24,6 +24,7 @@ export const Header: FC<Props> = (props: Props) => {
         <div className="flex flex-row pt-2">
           <div className="h-20 px-5">
             <input
+              type="text"
               placeholder="Find city"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => getCity(e)}
             />
@@ -31,7 +32,7 @@ export const Header: FC<Props> = (props: Props) => {
           <div>
             <button
               className="bg-blue-500 h-6 w-12 text-white rounded-sm"
-              onClick={() => sendCity()}
+              onClick={sendCity}
             >
               Find
             </button>

@@ -22,7 +22,7 @@ export const Metric: FC<Props> = ({
       <div className="relative pt-12 pl-8 w-full ">
         <div className="flex pt-0.5">
           <IconSVG id="temp" />
-          <span className="pl-5 text-sm text-stone-500">Temperature</span>
+          <span className="pl-7 text-sm text-stone-500">Temperature</span>
           <span className="pl-5 text-sm">
             {temp_c}° - feels like {feelslike_c}°
           </span>

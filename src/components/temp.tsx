@@ -29,7 +29,7 @@ export const Temp: FC<Props> = ({
           <img style={{ width: "100px" }} src={`https://${icon}`} alt="" />
         </div>
       </div>
-      <div className="flex flex-col pt-8 pb-5 ">
+      <div className="flex flex-col pt-8 pb-4 ">
         <span className="font-normal text-2xl text-stone-500">
           Time: {localtime}
         </span>

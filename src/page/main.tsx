@@ -8,7 +8,7 @@ import { Spin } from "antd";
 import { FC } from "react";
 
 type GetDays = {
-  getDays: Function;
+  getDays: (param: number) => void;
 };
 
 export const Main: FC<GetDays> = ({ getDays }: GetDays) => {
@@ -20,12 +20,12 @@ export const Main: FC<GetDays> = ({ getDays }: GetDays) => {
     (state) => state.ReducerWeatherWeek
   );
 
-  if (weatherWeek !== null) {
-    var { forecast } = weatherWeek;
-  }
-  if (weather !== null) {
-    var { current, location } = weather;
-  }
+  const forecast = weatherWeek?.forecast;
+  const current = weather?.current;
+  const location = weather?.location;
+
+  console.log(current);
+  console.log(location);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 80 }} spin />;
 
